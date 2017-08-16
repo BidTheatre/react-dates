@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import shallowCompare from 'react-addons-shallow-compare';
 import ReactDOM from 'react-dom';
 import { forbidExtraProps, nonNegativeInteger } from 'airbnb-prop-types';
 import moment from 'moment';
@@ -180,7 +179,7 @@ function getMonthHeight(el) {
   );
 }
 
-export default class DayPicker extends React.Component {
+export default class DayPicker extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -273,10 +272,6 @@ export default class DayPicker extends React.Component {
         this.setState({ focusedDate: null });
       }
     }
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState);
   }
 
   componentDidUpdate(prevProps, prevState) {
